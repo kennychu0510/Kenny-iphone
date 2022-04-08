@@ -1,0 +1,251 @@
+html {
+    overflow: hidden;
+}
+
+body {
+    background: url(media/wallpaper_blue.jpeg) no-repeat center center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    user-select: none;
+    position: relative;
+    margin: 0;
+    width: 100vw;
+}
+
+#top-bar {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    background-color: transparent;
+    padding: 15px 8vw 0px;
+    width: 100%;
+    font-size: 16px;
+    z-index: 10;
+    position: relative;
+}
+
+.time {
+    font-weight: normal;
+}
+
+.date-time {
+    display: flex;
+}
+
+.date-time .date {
+    padding-left: 15px;
+}
+
+
+#top-right-bar {
+    display: flex;
+    font-size: 16px;
+    align-items: center;
+}
+
+.bi-battery-full {
+    font-size: 25px;
+    line-height: 20px;
+    align-self: end;
+}
+
+#top-right-bar>i {
+    padding-right: 6px;
+}
+
+.grid-container {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 20vw);
+    column-gap: 3vw;
+    row-gap: 5vw;
+    padding: 10px;
+    width: 95vw;
+    font-size: 14px;
+    color: white;
+}
+
+.grid-item {
+    text-align: center;
+}
+
+.grid-item>img {
+    width: 15vw;
+}
+
+.grid-item:hover {
+    cursor: pointer;
+}
+
+.app-name {
+    margin-top: 5px;
+}
+
+/* Customized app icons */
+
+img[alt=game] {
+    border-radius: 10px;
+}
+
+img[alt=youtube] {
+    border-radius: 10px;
+    background-color: white;
+}
+
+img[alt=aboutme] {
+    border-radius: 10px;
+}
+
+/* #dock::before {
+    content: '';
+    width: 90vw;
+    height: 100px;
+    background-color: rgba(128, 128, 128, 0.671);
+    position: absolute;
+    bottom: 4%;
+    left: 50%;
+    transform: translateX(-50%);
+} */
+
+
+#calendar-div {
+    margin: 0 auto;
+    background-color: white;
+    color: red;
+    text-transform: uppercase;
+    width: 6vw;
+    height: 6vw;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+#calendar-day {
+    padding-top: 5%;
+
+}
+
+#calendar-date {
+    font-size: 2.5vw;
+    color: black;
+    margin-top: -10%;
+}
+
+.dock {
+    background-color: rgba(109, 108, 108, 0.671);
+    padding: 5% 10px;
+    border-radius: 30px;
+}
+
+
+.grid-item-about-me {
+    position: relative;
+}
+
+.grid-item-about-me.active {
+    position: static;
+}
+
+#about-me {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0;
+    display: none;
+    position: absolute;
+    inset: 0;
+}
+
+#about-me>div {
+    padding: 5%;
+}
+
+#about-me.active {
+    animation: appOpen 1s forwards ease-out;
+    background-color: black;
+    padding-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+@keyframes appOpen {
+    100% {
+        opacity: 1;
+
+
+    }
+}
+
+.profile-pic {
+    width: 15vh;
+    border-radius: 100%;
+    border: 5px solid white;
+}
+
+.name {
+    font-size: 3vh;
+    color: white;
+}
+
+@media only screen and (min-width: 500px) {
+    .grid-container {
+        grid-template-columns: repeat(6, auto);
+        column-gap: 5vw;
+        row-gap: 3vw;
+    }
+
+    .grid-item>img {
+        width: 6vw;
+    }
+
+    #top-bar {
+        padding: 15px 6vw;
+        padding-right: 5vw;
+    }
+
+    #dock {
+        margin-top: 2vh;
+        height: 10vh;
+    }
+
+    .dock {
+        display: flex;
+        justify-content: center;
+        padding: 2%;
+        width: fit-content;
+        background-color: rgba(0, 0, 0, 0.562);
+        column-gap: 3vw;
+    }
+
+    /* Fix calendar app */
+
+}
+
+@media only screen and (max-width: 500px) {
+    .date {
+        display: none;
+    }
+
+    #calendar-div {
+        width: 15vw;
+        height: 15vw;
+        font-weight: bold;
+        border-radius: 10px;
+    }
+
+    #calendar-day {
+        padding-top: 5%;
+
+    }
+
+    #calendar-date {
+        font-size: 8vw;
+        color: black;
+        margin-top: -15%;
+    }
+}
