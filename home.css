@@ -84,19 +84,18 @@ body {
 }
 
 /* Customized app icons */
-
-img[alt=game] {
-    border-radius: 10px;
-}
-
 img[alt=youtube] {
-    border-radius: 10px;
+
     background-color: white;
 }
 
-img[alt=aboutme] {
+img[alt=aboutme],
+img[alt=github],
+img[alt=game],
+img[alt=youtube] {
     border-radius: 20%;
 }
+
 
 
 /* #dock::before {
