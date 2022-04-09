@@ -85,7 +85,7 @@ addonClickToLink(githubApp, 'https://github.com/kennychu0510')
 addonClickToLink(weatherApp, 'https://www.hko.gov.hk/en/index.html')
 addonClickToLink(linkedinApp, 'http://www.linkedin.com/in/kenny-kc-chu')
 addonClickToLink(homeApp, '/tecky-exercises/wef008/index.html')
-addonClickToLink(gameApp, '/tecky-exercises/wef008/game.html')
+addonClickToLink(gameApp, '/game/game.html')
 addonClickToLink(whatsApp, 'https://api.whatsapp.com/send?phone=85298545977')
 addonClickToLink(telegramApp, 'https://t.me/Kengono')
 
