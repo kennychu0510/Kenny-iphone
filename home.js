@@ -86,7 +86,7 @@ function removeClass(DOMelement, className) {
     DOMelement.classList.remove(className)
 }
 
-const gameLink = 'https://kennychu0510.github.io/game.html'
+const gameLink = 'https://kennychu0510.github.io/Kenny-iphone/game/game.html'
 
 // Enable button links
 addonClickToLink(appleApp, 'http://www.apple.com')
