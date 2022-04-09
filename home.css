@@ -165,7 +165,7 @@ img[alt=aboutme] {
 }
 
 #about-me.active {
-    animation: appOpen 1s forwards ease-out;
+    animation: appOpen 0.5s forwards ease-out;
     background-color: black;
     padding-top: 10vh;
     display: flex;
