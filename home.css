@@ -157,7 +157,6 @@ img[alt=aboutme] {
     position: absolute;
     inset: 0;
     color: white;
-    animation: appOpen 1s forwards reverse ease-out;
 
 }
 
@@ -172,7 +171,6 @@ img[alt=aboutme] {
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 
