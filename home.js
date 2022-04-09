@@ -62,7 +62,7 @@ const gameApp = document.querySelector('img[alt=game]')
 const youtubeApp = document.querySelector('img[alt=youtube]')
 const whatsApp = document.querySelector('img[alt=whatsapp]')
 const telegramApp = document.querySelector('img[alt=telegram]')
-const aboutMeApp = document.querySelector('img[alt=aboutme]')
+const contactMeApp = document.querySelector('img[alt=contact]')
 const aboutMeGridItem = document.querySelector('.grid-item-about-me')
 const callApp = document.querySelector('img[alt=phone]')
 const callButton = document.querySelector('.call-button')
@@ -72,7 +72,7 @@ const mailButton = document.querySelector('.mail-button')
 const returnHomeButton = document.querySelector('.return-home')
 
 // Contents
-const aboutMeDiv = document.querySelector('#about-me')
+const contactMeDiv = document.querySelector('#contact-me')
 
 function addonClickToLink(DOMobject, link) {
     DOMobject.addEventListener('click', () => window.open(link))
@@ -105,10 +105,10 @@ addonClickToLink(callButton, 'tel:852-98545977')
 addonClickToLink(callApp, 'tel:852-98545977')
 addonClickToLink(gameApp, gameLink)
 
-aboutMeApp.addEventListener('click', () => {
-    addClass(aboutMeDiv, 'active')
+contactMeApp.addEventListener('click', () => {
+    addClass(contactMeDiv, 'active')
 })
 
 returnHomeButton.addEventListener('click', () => {
-    removeClass(aboutMeDiv, 'active')
+    removeClass(contactMeDiv, 'active')
 })

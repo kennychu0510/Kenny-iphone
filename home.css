@@ -95,8 +95,9 @@ img[alt=youtube] {
 }
 
 img[alt=aboutme] {
-    border-radius: 10px;
+    border-radius: 20%;
 }
+
 
 /* #dock::before {
     content: '';
@@ -118,7 +119,7 @@ img[alt=aboutme] {
     width: 6vw;
     height: 6vw;
     font-weight: bold;
-    border-radius: 10px;
+    border-radius: 20%;
 }
 
 #calendar-day {
@@ -148,7 +149,7 @@ img[alt=aboutme] {
     position: static;
 }
 
-#about-me {
+#contact-me {
     width: 100vw;
     height: 100vh;
     background-color: black;
@@ -161,11 +162,11 @@ img[alt=aboutme] {
 }
 
 
-#about-me>div {
+#contact-me>div {
     padding: 5%;
 }
 
-#about-me.active {
+#contact-me.active {
     animation: appOpen 0.5s forwards ease-out;
     background-color: black;
     padding-top: 10vh;
@@ -234,6 +235,10 @@ img[alt=aboutme] {
 .return-home i {
     font-size: 5vw;
     padding-bottom: 1vw;
+}
+
+.return-home:hover {
+    cursor: pointer;
 }
 
 
@@ -310,6 +315,55 @@ img[alt=aboutme] {
 
     .dock {
         padding: 1.5%;
+    }
+
+    .bi-battery-full {
+        align-self: center;
+    }
+
+    .grid-item:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+    }
+
+    #contact-me>div {
+        padding: 0;
+    }
+
+    .return-home {
+        margin-left: 6vw;
+        margin-top: 1vh;
+    }
+
+    .return-home i {
+        font-size: 2vw;
+        padding-bottom: 0.5vw;
+    }
+
+    .profile-pic {
+        width: 25vh;
+    }
+
+    #contact-me>div.name {
+        padding: 10vh 0;
+        font-size: 5vh;
+
+    }
+
+    #contact-me-buttons {
+        width: 50vw;
+    }
+
+    .contact-button {
+        width: 5vw;
+        font-size: 1vw;
+        padding: 1vw;
+        border-radius: 10px;
+        width: 130px;
+    }
+
+    .contact-button i {
+        font-size: 2vw;
     }
 
 }
