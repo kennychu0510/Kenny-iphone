@@ -101,7 +101,7 @@ addonClickToLink(telegramApp, 'https://t.me/Kengono')
 addonClickToLink(telegramButton, 'https://t.me/Kengono')
 addonClickToLink(callButton, 'tel:852-98545977')
 addonClickToLink(callApp, 'tel:852-98545977')
-addonClickToLink(gameApp, 'https://kennychu0510.github.io/game/index.html')
+addonClickToLink(gameApp, 'https://kennychu0510.github.io/game/game.html')
 
 aboutMeApp.addEventListener('click', () => {
     addClass(aboutMeDiv, 'active')
