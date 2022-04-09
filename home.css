@@ -1,6 +1,4 @@
-html {
-    overflow: hidden;
-}
+html {}
 
 body {
     background: url(media/wallpaper_blue.jpeg) no-repeat center center fixed;
@@ -158,6 +156,9 @@ img[alt=aboutme] {
     display: none;
     position: absolute;
     inset: 0;
+    color: white;
+    animation: appOpen 1s forwards reverse ease-out;
+
 }
 
 #about-me>div {
@@ -174,14 +175,21 @@ img[alt=aboutme] {
 
 }
 
+
 @keyframes appOpen {
+    0% {
+        opacity: 0;
+        display: none;
+    }
+
     100% {
         opacity: 1;
-
-
     }
 }
 
+
+
+/* About Me App */
 .profile-pic {
     width: 15vh;
     border-radius: 100%;
@@ -190,8 +198,45 @@ img[alt=aboutme] {
 
 .name {
     font-size: 3vh;
-    color: white;
 }
+
+#contact-me-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.contact-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(49, 49, 49);
+    margin: 0 10px;
+    padding: 2vw;
+    font-size: 4vw;
+    width: 19vw;
+    min-width: fit-content;
+    border-radius: 3vw;
+}
+
+.contact-button i {
+    font-size: 5vw;
+    margin-bottom: 1vw;
+}
+
+.return-home {
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -5vh;
+    margin-left: 3vw;
+}
+
+.return-home i {
+    font-size: 5vw;
+    padding-bottom: 1vw;
+}
+
 
 @media only screen and (min-width: 500px) {
     .grid-container {
@@ -223,10 +268,9 @@ img[alt=aboutme] {
         column-gap: 3vw;
     }
 
-    /* Fix calendar app */
-
 }
 
+/* Fix calendar app */
 @media only screen and (max-width: 500px) {
     .date {
         display: none;

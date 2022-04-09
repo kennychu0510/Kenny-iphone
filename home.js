@@ -64,6 +64,12 @@ const whatsApp = document.querySelector('img[alt=whatsapp]')
 const telegramApp = document.querySelector('img[alt=telegram]')
 const aboutMeApp = document.querySelector('img[alt=aboutme]')
 const aboutMeGridItem = document.querySelector('.grid-item-about-me')
+const callApp = document.querySelector('img[alt=phone]')
+const callButton = document.querySelector('.call-button')
+const whatsappButton = document.querySelector('.whatsapp-button')
+const telegramButton = document.querySelector('.telegram-button')
+const mailButton = document.querySelector('.mail-button')
+const returnHomeButton = document.querySelector('.return-home')
 
 // Contents
 const aboutMeDiv = document.querySelector('#about-me')
@@ -76,21 +82,32 @@ function addClass(DOMelement, className) {
     DOMelement.classList.add(className)
 }
 
+function removeClass(DOMelement, className) {
+    DOMelement.classList.remove(className)
+}
+
 // Enable button links
 addonClickToLink(appleApp, 'http://www.apple.com')
 addonClickToLink(instagramApp, 'https://www.instagram.com/kengonoo/')
 addonClickToLink(facebookApp, 'https://www.facebook.com/kennychu0510')
 addonClickToLink(mailApp, 'mailto:kennychu0510@gmail.com')
+addonClickToLink(mailButton, 'mailto:kennychu0510@gmail.com')
 addonClickToLink(githubApp, 'https://github.com/kennychu0510')
 addonClickToLink(weatherApp, 'https://www.hko.gov.hk/en/index.html')
 addonClickToLink(linkedinApp, 'http://www.linkedin.com/in/kenny-kc-chu')
 addonClickToLink(homeApp, '/tecky-exercises/wef008/index.html')
 addonClickToLink(gameApp, '/game/game.html')
 addonClickToLink(whatsApp, 'https://api.whatsapp.com/send?phone=85298545977')
+addonClickToLink(whatsappButton, 'https://api.whatsapp.com/send?phone=85298545977')
 addonClickToLink(telegramApp, 'https://t.me/Kengono')
-
-
+addonClickToLink(telegramButton, 'https://t.me/Kengono')
+addonClickToLink(callButton, 'tel:852-98545977')
+addonClickToLink(callApp, 'tel:852-98545977')
 
 aboutMeApp.addEventListener('click', () => {
     addClass(aboutMeDiv, 'active')
+})
+
+returnHomeButton.addEventListener('click', () => {
+    removeClass(aboutMeDiv, 'active')
 })
