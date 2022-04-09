@@ -86,6 +86,8 @@ function removeClass(DOMelement, className) {
     DOMelement.classList.remove(className)
 }
 
+const gameLink = 'https://kennychu0510.github.io/Kenny-iphone/game/game.html'
+
 // Enable button links
 addonClickToLink(appleApp, 'http://www.apple.com')
 addonClickToLink(instagramApp, 'https://www.instagram.com/kengonoo/')
@@ -101,7 +103,7 @@ addonClickToLink(telegramApp, 'https://t.me/Kengono')
 addonClickToLink(telegramButton, 'https://t.me/Kengono')
 addonClickToLink(callButton, 'tel:852-98545977')
 addonClickToLink(callApp, 'tel:852-98545977')
-addonClickToLink(gameApp, 'https://kennychu0510.github.io/Kenny-iphone/game/game.html')
+addonClickToLink(gameApp, gameLink)
 
 aboutMeApp.addEventListener('click', () => {
     addClass(aboutMeDiv, 'active')
