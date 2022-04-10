@@ -160,7 +160,6 @@ img[alt=youtube] {
 
 }
 
-
 .app-content>div {
     padding: 5%;
 }
@@ -187,6 +186,93 @@ label[for=note-area] {
     font-size: 5vh;
 }
 
+.reminder>div.reminder-container {
+    padding: 3vh 6vw;
+    width: 100%;
+}
+
+.reminder-container>h2 {
+    display: block;
+    color: rgb(24, 137, 252);
+    font-family: 'Signika Negative', sans-serif;
+    font-weight: 600;
+    font-size: 4vh;
+    padding-bottom: 1vh;
+}
+
+.reminder-item {
+    position: relative;
+    padding-bottom: 1vh;
+}
+
+input[type=checkbox] {
+    margin-right: 5vw;
+    opacity: 0;
+    cursor: pointer;
+    width: 5vw;
+    height: 5vw;
+}
+
+/* Custom checkbox button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    background-color: black;
+    border: 1px rgb(71, 72, 76) solid;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* When checkbox is checked (big blue dot)*/
+.checkmark:after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    background: rgb(24, 137, 252);
+    cursor: pointer;
+    display: none;
+    pointer-events: none;
+}
+
+/* When checkbox is checked */
+.reminder-item input:checked~.checkmark::after {
+    display: block;
+}
+
+.reminder-item input:checked~.checkmark {
+    border-color: rgb(24, 137, 252)
+}
+
+
+.reminder-item>textarea {
+    background-color: black;
+    caret-color: white;
+    color: white;
+    border: none;
+    width: 70vw;
+    overflow-wrap: break-word;
+}
+
+.reminder img[alt=new-reminder] {
+    width: 8vw;
+    padding-right: 2vw;
+}
+
+.new-reminder-container {
+    margin-top: auto;
+    margin-bottom: 10vh;
+    align-self: start;
+    display: flex;
+    align-items: center;
+}
+
 textarea#note-area {
     height: 100%;
     resize: none;
@@ -195,9 +281,12 @@ textarea#note-area {
     caret-color: white;
     font-size: 4vh;
     color: white;
+    height: min-content;
 }
 
-textarea#note-area:focus {
+textarea#note-area:focus,
+.reminder-item input[type=text]:focus,
+.reminder-item>textarea:focus {
     outline: none;
 }
 
@@ -311,6 +400,7 @@ form.message-me-form {
 
 #about-me-content {
     padding: 0 5%;
+    background-color: black;
 }
 
 

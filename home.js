@@ -66,6 +66,7 @@ const contactMeApp = document.querySelector('img[alt=contact]')
 const aboutMeApp = document.querySelector('.grid-item-about-me')
 const notesApp = document.querySelector('img[alt=notes]')
 const clockApp = document.querySelector('img[alt=clock]')
+const reminderApp = document.querySelector('img[alt=reminder]')
 // const callApp = document.querySelector('img[alt=phone]')
 // const callButton = document.querySelector('.call-button')
 // const whatsappButton = document.querySelector('.whatsapp-button')
@@ -87,6 +88,11 @@ const aboutMeDiv = document.querySelector('.about-me')
 const gameDiv = document.querySelector('.game')
 const notesDiv = document.querySelector('.notes')
 const clockDiv = document.querySelector('.clock')
+const reminderDiv = document.querySelector('.reminder')
+const reminderDivContainer = document.querySelector('.reminder-container')
+
+// Buttons inside Apps
+const newReminderButton = document.querySelector('.new-reminder-container')
 
 function addonClickToLink(DOMobject, link) {
     DOMobject.addEventListener('click', () => window.open(link))
@@ -153,6 +159,10 @@ const myApps = [{
     {
         app: clockApp,
         div: clockDiv
+    },
+    {
+        app: reminderApp,
+        div: reminderDiv,
     }
 ]
 
@@ -179,6 +189,31 @@ contactMe_messageMeButton.addEventListener('click', () => {
 contactMe_wechatMeButton.addEventListener('click', () => {
     removeClass(messageDiv, 'active')
     addClass(wechatDiv, 'active')
+})
+
+
+// Button inside reminder app
+newReminderButton.addEventListener('click', () => {
+    const reminderItems = document.querySelectorAll('.reminder-item').length
+
+    if (length > 8) {
+        alert('Max reminders reached')
+    } else {
+
+        const reminderItemDiv = document.createElement('div')
+        addClass(reminderItemDiv, 'reminder-item')
+        const checkboxInput = document.createElement('input')
+        checkboxInput.setAttribute('type', 'checkbox')
+        const checkmarkSpan = document.createElement('span')
+        addClass(checkmarkSpan, 'checkmark')
+        const reminderInput = document.createElement('textarea')
+        const horizontalLine = document.createElement('hr')
+
+        reminderItemDiv.append(checkboxInput, checkmarkSpan, reminderInput, horizontalLine)
+
+        reminderDivContainer.appendChild(reminderItemDiv)
+    }
+
 })
 
 // NO FUNCTIONS YET
