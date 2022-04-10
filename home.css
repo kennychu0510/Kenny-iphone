@@ -187,7 +187,6 @@ img[alt=youtube] {
 }
 
 
-
 /* About Me App */
 .profile-pic {
     width: 15vh;
@@ -229,7 +228,7 @@ img[alt=youtube] {
     align-items: center;
     position: absolute;
     color: white;
-    top: 7vh;
+    top: 6vh;
     left: 7vw;
     z-index: 10;
     display: none;
@@ -287,6 +286,13 @@ form.message-me-form {
     padding: 0 5%;
 }
 
+
+/* Game App */
+.game>iframe {
+    width: 100vw;
+    height: 100%;
+    padding-top: 3vh;
+}
 
 @media only screen and (min-width: 500px) {
     .grid-container {
@@ -405,7 +411,7 @@ form.message-me-form {
 
     .return-home {
         left: 6vw;
-        top: 10vh;
+        top: 9vh;
     }
 
     .return-home i {
@@ -415,6 +421,10 @@ form.message-me-form {
     .wechat-QRcode {
         padding-top: 15vh;
         height: 80vh;
+    }
+
+    .game>iframe {
+        padding-top: 10vh;
     }
 
 }

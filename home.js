@@ -82,6 +82,7 @@ const contactMeDiv = document.querySelector('.contact-me')
 const wechatDiv = document.querySelector('.wechat')
 const messageDiv = document.querySelector('.message')
 const aboutMeDiv = document.querySelector('.about-me')
+const gameDiv = document.querySelector('.game')
 
 function addonClickToLink(DOMobject, link) {
     DOMobject.addEventListener('click', () => window.open(link))
@@ -116,39 +117,47 @@ addonClickToLink(telegramApp, 'https://t.me/Kengono')
 addonClickToLink(telegramButton, 'https://t.me/Kengono')
 // addonClickToLink(callButton, 'tel:852-********')
 // addonClickToLink(callApp, 'tel:852-********')
-addonClickToLink(gameApp, gameLink)
+// addonClickToLink(gameApp, gameLink)
 
 
 // App opening
-contactMeApp.addEventListener('click', () => {
-    toggleClass(returnHomeButton, 'active')
-    addClass(contactMeDiv, 'active')
-})
+const myApps = [{
+        app: contactMeApp,
+        div: contactMeDiv
+    },
+    {
+        app: wechatApp,
+        div: wechatDiv
+    },
+    {
+        app: messageApp,
+        div: messageDiv
+    },
+    {
+        app: aboutMeApp,
+        div: aboutMeDiv
+    },
+    {
+        app: gameApp,
+        div: gameDiv
+    }
+]
+
+for (let appObject of myApps) {
+    appObject.app.addEventListener('click', () => {
+        toggleClass(returnHomeButton, 'active')
+        addClass(appObject.div, 'active')
+    })
+}
 
 returnHomeButton.addEventListener('click', () => {
+    const appDiv = [contactMeDiv, wechatDiv, messageDiv, aboutMeDiv, gameDiv]
     toggleClass(returnHomeButton, 'active')
+    appDiv.forEach((div) => {
+        removeClass(div, 'active')
+    })
     removeClass(contactMeDiv, 'active')
-    removeClass(wechatDiv, 'active')
-    removeClass(messageDiv, 'active')
-    removeClass(aboutMeDiv, 'active')
-
 })
-
-wechatApp.addEventListener('click', () => {
-    toggleClass(returnHomeButton, 'active')
-    addClass(wechatDiv, 'active')
-})
-
-messageApp.addEventListener('click', () => {
-    toggleClass(returnHomeButton, 'active')
-    addClass(messageDiv, 'active')
-})
-
-aboutMeApp.addEventListener('click', () => {
-    toggleClass(returnHomeButton, 'active')
-    addClass(aboutMeDiv, 'active')
-})
-
 
 // Buttons within Contact Me App 
 contactMe_messageMeButton.addEventListener('click', () => {
@@ -163,5 +172,5 @@ contactMe_wechatMeButton.addEventListener('click', () => {
 
 // NO FUNCTIONS YET
 messageMeButton.addEventListener('click', () => {
-    alert("Not Yet Implemented")
+    alert("MESSAGE WILL WORK SOON!")
 })
