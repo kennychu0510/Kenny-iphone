@@ -65,6 +65,7 @@ const telegramApp = document.querySelector('img[alt=telegram]')
 const contactMeApp = document.querySelector('img[alt=contact]')
 const aboutMeApp = document.querySelector('.grid-item-about-me')
 const notesApp = document.querySelector('img[alt=notes]')
+const clockApp = document.querySelector('img[alt=clock]')
 // const callApp = document.querySelector('img[alt=phone]')
 // const callButton = document.querySelector('.call-button')
 // const whatsappButton = document.querySelector('.whatsapp-button')
@@ -85,6 +86,7 @@ const messageDiv = document.querySelector('.message')
 const aboutMeDiv = document.querySelector('.about-me')
 const gameDiv = document.querySelector('.game')
 const notesDiv = document.querySelector('.notes')
+const clockDiv = document.querySelector('.clock')
 
 function addonClickToLink(DOMobject, link) {
     DOMobject.addEventListener('click', () => window.open(link))
@@ -113,6 +115,7 @@ addonClickToLink(mailButton, 'mailto:kennychu0510@gmail.com')
 addonClickToLink(githubApp, 'https://github.com/kennychu0510')
 addonClickToLink(weatherApp, 'https://www.hko.gov.hk/en/index.html')
 addonClickToLink(linkedinApp, 'http://www.linkedin.com/in/kenny-kc-chu')
+addonClickToLink(youtubeApp, 'https://www.youtube.com/')
 // addonClickToLink(whatsApp, 'https://api.whatsapp.com/send?phone=')
 // addonClickToLink(whatsappButton, 'https://api.whatsapp.com/send?phone=')
 addonClickToLink(telegramApp, 'https://t.me/Kengono')
@@ -146,6 +149,10 @@ const myApps = [{
     {
         app: notesApp,
         div: notesDiv
+    },
+    {
+        app: clockApp,
+        div: clockDiv
     }
 ]
 
@@ -157,12 +164,10 @@ for (let appObject of myApps) {
 }
 
 returnHomeButton.addEventListener('click', () => {
-    const appDiv = [contactMeDiv, wechatDiv, messageDiv, aboutMeDiv, gameDiv, notesDiv]
     toggleClass(returnHomeButton, 'active')
-    appDiv.forEach((div) => {
-        removeClass(div, 'active')
-    })
-    removeClass(contactMeDiv, 'active')
+    for (let appObject of myApps) {
+        removeClass(appObject.div, 'active')
+    }
 })
 
 // Buttons within Contact Me App 
