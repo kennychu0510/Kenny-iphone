@@ -63,16 +63,25 @@ const youtubeApp = document.querySelector('img[alt=youtube]')
 const whatsApp = document.querySelector('img[alt=whatsapp]')
 const telegramApp = document.querySelector('img[alt=telegram]')
 const contactMeApp = document.querySelector('img[alt=contact]')
-const aboutMeGridItem = document.querySelector('.grid-item-about-me')
-const callApp = document.querySelector('img[alt=phone]')
-const callButton = document.querySelector('.call-button')
-const whatsappButton = document.querySelector('.whatsapp-button')
+const aboutMeApp = document.querySelector('.grid-item-about-me')
+// const callApp = document.querySelector('img[alt=phone]')
+// const callButton = document.querySelector('.call-button')
+// const whatsappButton = document.querySelector('.whatsapp-button')
+const wechatApp = document.querySelector('img[alt=wechat]')
+const messageApp = document.querySelector('img[alt=message]')
 const telegramButton = document.querySelector('.telegram-button')
 const mailButton = document.querySelector('.mail-button')
 const returnHomeButton = document.querySelector('.return-home')
+const messageMeButton = document.querySelector('form.message-me-form > .message-me-button')
+const contactMe_messageMeButton = document.querySelector('#contact-me-buttons > .message-me-button')
+const contactMe_wechatMeButton = document.querySelector('#contact-me-buttons > .wechat-me-button')
+
 
 // Contents
-const contactMeDiv = document.querySelector('#contact-me')
+const contactMeDiv = document.querySelector('.contact-me')
+const wechatDiv = document.querySelector('.wechat')
+const messageDiv = document.querySelector('.message')
+const aboutMeDiv = document.querySelector('.about-me')
 
 function addonClickToLink(DOMobject, link) {
     DOMobject.addEventListener('click', () => window.open(link))
@@ -86,6 +95,10 @@ function removeClass(DOMelement, className) {
     DOMelement.classList.remove(className)
 }
 
+function toggleClass(DOMelement, className) {
+    DOMelement.classList.toggle(className)
+}
+
 const gameLink = 'https://kennychu0510.github.io/Kenny-iphone/game/game.html'
 
 // Enable button links
@@ -97,18 +110,58 @@ addonClickToLink(mailButton, 'mailto:kennychu0510@gmail.com')
 addonClickToLink(githubApp, 'https://github.com/kennychu0510')
 addonClickToLink(weatherApp, 'https://www.hko.gov.hk/en/index.html')
 addonClickToLink(linkedinApp, 'http://www.linkedin.com/in/kenny-kc-chu')
-addonClickToLink(whatsApp, 'https://api.whatsapp.com/send?phone=85298545977')
-addonClickToLink(whatsappButton, 'https://api.whatsapp.com/send?phone=85298545977')
+// addonClickToLink(whatsApp, 'https://api.whatsapp.com/send?phone=')
+// addonClickToLink(whatsappButton, 'https://api.whatsapp.com/send?phone=')
 addonClickToLink(telegramApp, 'https://t.me/Kengono')
 addonClickToLink(telegramButton, 'https://t.me/Kengono')
-addonClickToLink(callButton, 'tel:852-98545977')
-addonClickToLink(callApp, 'tel:852-98545977')
+// addonClickToLink(callButton, 'tel:852-********')
+// addonClickToLink(callApp, 'tel:852-********')
 addonClickToLink(gameApp, gameLink)
 
+
+// App opening
 contactMeApp.addEventListener('click', () => {
+    toggleClass(returnHomeButton, 'active')
     addClass(contactMeDiv, 'active')
 })
 
 returnHomeButton.addEventListener('click', () => {
+    toggleClass(returnHomeButton, 'active')
     removeClass(contactMeDiv, 'active')
+    removeClass(wechatDiv, 'active')
+    removeClass(messageDiv, 'active')
+    removeClass(aboutMeDiv, 'active')
+
+})
+
+wechatApp.addEventListener('click', () => {
+    toggleClass(returnHomeButton, 'active')
+    addClass(wechatDiv, 'active')
+})
+
+messageApp.addEventListener('click', () => {
+    toggleClass(returnHomeButton, 'active')
+    addClass(messageDiv, 'active')
+})
+
+aboutMeApp.addEventListener('click', () => {
+    toggleClass(returnHomeButton, 'active')
+    addClass(aboutMeDiv, 'active')
+})
+
+
+// Buttons within Contact Me App 
+contactMe_messageMeButton.addEventListener('click', () => {
+    removeClass(messageDiv, 'active')
+    addClass(messageDiv, 'active')
+})
+
+contactMe_wechatMeButton.addEventListener('click', () => {
+    removeClass(messageDiv, 'active')
+    addClass(wechatDiv, 'active')
+})
+
+// NO FUNCTIONS YET
+messageMeButton.addEventListener('click', () => {
+    alert("Not Yet Implemented")
 })

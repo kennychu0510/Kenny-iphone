@@ -148,7 +148,7 @@ img[alt=youtube] {
     position: static;
 }
 
-#contact-me {
+.app-content {
     width: 100vw;
     height: 100vh;
     background-color: black;
@@ -161,11 +161,11 @@ img[alt=youtube] {
 }
 
 
-#contact-me>div {
+.app-content>div {
     padding: 5%;
 }
 
-#contact-me.active {
+.app-content.active {
     animation: appOpen 0.5s forwards ease-out;
     background-color: black;
     padding-top: 10vh;
@@ -193,6 +193,7 @@ img[alt=youtube] {
     width: 15vh;
     border-radius: 100%;
     border: 5px solid white;
+    margin-top: 10%;
 }
 
 .name {
@@ -223,21 +224,67 @@ img[alt=youtube] {
 }
 
 .return-home {
-    align-self: start;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: -5vh;
-    margin-left: 3vw;
+    position: absolute;
+    color: white;
+    top: 7vh;
+    left: 7vw;
+    z-index: 10;
+    display: none;
 }
 
 .return-home i {
     font-size: 5vw;
-    padding-bottom: 1vw;
+    padding-bottom: 0.5vw;
 }
 
 .return-home:hover {
     cursor: pointer;
+}
+
+.return-home.active {
+    display: flex;
+}
+
+.wechat-QRcode {
+    padding-top: 8vh;
+    height: 60vh;
+}
+
+form.message-me-form {
+    margin: 15vh 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-me-form label {
+    align-self: start;
+}
+
+.message-me-form>* {
+    padding: 1vh;
+}
+
+.message-me-form>input,
+.message-me-form>textarea {
+    border-radius: 5px;
+}
+
+.message-me-form div.message-me-button {
+    margin-top: 2vh;
+}
+
+.bold {
+    font-weight: bold;
+    align-self: start;
+}
+
+#about-me-content {
+    padding: 0 5%;
 }
 
 
@@ -325,25 +372,16 @@ img[alt=youtube] {
         transform: scale(1.2);
     }
 
-    #contact-me>div {
+    .app-content>div {
         padding: 0;
     }
 
-    .return-home {
-        margin-left: 6vw;
-        margin-top: 1vh;
-    }
-
-    .return-home i {
-        font-size: 2vw;
-        padding-bottom: 0.5vw;
-    }
-
     .profile-pic {
+        margin-top: 5%;
         width: 25vh;
     }
 
-    #contact-me>div.name {
+    .app-content>div.name {
         padding: 10vh 0;
         font-size: 5vh;
 
@@ -363,6 +401,20 @@ img[alt=youtube] {
 
     .contact-button i {
         font-size: 2vw;
+    }
+
+    .return-home {
+        left: 6vw;
+        top: 10vh;
+    }
+
+    .return-home i {
+        font-size: 5vh;
+    }
+
+    .wechat-QRcode {
+        padding-top: 15vh;
+        height: 80vh;
     }
 
 }
