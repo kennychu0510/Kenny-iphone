@@ -373,10 +373,13 @@ form.message-me-form {
         align-self: center;
     }
 
-    .grid-item:hover {
+    .grid-item:hover,
+    .contact-button:hover,
+    .return-home:hover {
         cursor: pointer;
         transform: scale(1.2);
     }
+
 
     .app-content>div {
         padding: 0;
