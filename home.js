@@ -64,6 +64,7 @@ const whatsApp = document.querySelector('img[alt=whatsapp]')
 const telegramApp = document.querySelector('img[alt=telegram]')
 const contactMeApp = document.querySelector('img[alt=contact]')
 const aboutMeApp = document.querySelector('.grid-item-about-me')
+const notesApp = document.querySelector('img[alt=notes]')
 // const callApp = document.querySelector('img[alt=phone]')
 // const callButton = document.querySelector('.call-button')
 // const whatsappButton = document.querySelector('.whatsapp-button')
@@ -83,6 +84,7 @@ const wechatDiv = document.querySelector('.wechat')
 const messageDiv = document.querySelector('.message')
 const aboutMeDiv = document.querySelector('.about-me')
 const gameDiv = document.querySelector('.game')
+const notesDiv = document.querySelector('.notes')
 
 function addonClickToLink(DOMobject, link) {
     DOMobject.addEventListener('click', () => window.open(link))
@@ -140,6 +142,10 @@ const myApps = [{
     {
         app: gameApp,
         div: gameDiv
+    },
+    {
+        app: notesApp,
+        div: notesDiv
     }
 ]
 
@@ -151,7 +157,7 @@ for (let appObject of myApps) {
 }
 
 returnHomeButton.addEventListener('click', () => {
-    const appDiv = [contactMeDiv, wechatDiv, messageDiv, aboutMeDiv, gameDiv]
+    const appDiv = [contactMeDiv, wechatDiv, messageDiv, aboutMeDiv, gameDiv, notesDiv]
     toggleClass(returnHomeButton, 'active')
     appDiv.forEach((div) => {
         removeClass(div, 'active')
