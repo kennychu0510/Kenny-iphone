@@ -64,6 +64,8 @@ function setRotation(element, rotationRatio) {
 }
 
 updateTime()
+
+updateTime()
 setInterval(updateTime, 1000)
 
 // DOM Elements Select

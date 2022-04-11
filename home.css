@@ -546,12 +546,8 @@ form.message-me-form {
     .grid-container {
         grid-template-columns: repeat(7, auto);
         column-gap: 4vw;
-        row-gap: 10vh;
+        row-gap: 6vh;
         font-size: 2vw;
-    }
-
-    #clock-app-div {
-        font-size: 1vw;
     }
 
     .grid-item>img,
@@ -574,17 +570,16 @@ form.message-me-form {
     }
 
     .clock-frame {
-        font-size: 1.5vh;
+        font-size: 1vh;
     }
 
 
     #top-bar {
-        padding: 15px 6vw;
-        padding-right: 5vw;
+        padding: 15px 4vw;
     }
 
     #dock {
-        margin-top: 2vh;
+        margin-top: 5vh;
         height: 10vh;
     }
 
@@ -634,6 +629,7 @@ form.message-me-form {
 @media only screen and (min-width: 1100px) {
     #top-bar {
         font-size: 20px;
+
     }
 
     .grid-container {
