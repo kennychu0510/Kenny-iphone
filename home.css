@@ -125,7 +125,7 @@ img[alt=youtube] {
 
 /* Clock-app at home screen */
 #clock-app-div {
-    font-size: 45%;
+    font-size: 50%;
     color: black;
     display: flex;
     justify-content: center;
@@ -586,7 +586,7 @@ form.message-me-form {
     }
 }
 
-@media only screen and (min-width: 1700px) {
+@media only screen and (min-width: 1200px) {
     #top-bar {
         font-size: 20px;
     }
