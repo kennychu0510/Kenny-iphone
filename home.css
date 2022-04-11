@@ -257,8 +257,8 @@ img[alt=youtube] {
 
 #calendar-date {
     color: black;
-    margin-top: -5%;
-    font-size: 6vw;
+    margin-top: -15%;
+    font-size: 8vw;
 }
 
 .dock {
@@ -570,7 +570,7 @@ form.message-me-form {
 
     #calendar-date {
         margin-top: -15%;
-        font-size: 3vw;
+        font-size: 4vw;
     }
 
     .clock-frame {
@@ -599,6 +599,10 @@ form.message-me-form {
 
     .date {
         display: flex;
+    }
+
+    #calendar-date {
+        font-size: 4vw;
     }
 
 }
@@ -715,7 +719,6 @@ form.message-me-form {
         height: var(--appSize);
     } */
 
-
 }
 
 @media only screen and (max-height: 800px) {
@@ -730,4 +733,11 @@ form.message-me-form {
     /* #calendar-date {
         font-size: 5vh;
     } */
+}
+
+@media only screen and (min-width: 1700px) {
+    div#calendar-date {
+        font-size: 60px;
+    }
+
 }
