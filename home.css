@@ -209,7 +209,7 @@ img[alt=youtube] {
     transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
     border-top-left-radius: 25%;
     border-top-right-radius: 25%;
-    z-index: 10;
+    /* z-index: 10; */
     border: 50% solid black;
 }
 
@@ -227,7 +227,7 @@ img[alt=youtube] {
     content: '';
     position: absolute;
     background-color: black;
-    z-index: 11;
+    /* z-index: 11; */
     width: 7%;
     height: 7%;
     top: 50%;
