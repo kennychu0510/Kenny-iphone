@@ -12,6 +12,7 @@ body {
     position: relative;
     margin: 0;
     width: 100vw;
+
 }
 
 #top-bar {
@@ -109,8 +110,9 @@ img[alt=youtube] {
     transform: translateX(-50%);
 } */
 
-
-#calendar-div {
+/* Home screen icons */
+#calendar-div,
+#clock-app-div {
     margin: 0 auto;
     background-color: white;
     color: red;
@@ -121,10 +123,123 @@ img[alt=youtube] {
     border-radius: 20%;
 }
 
+/* Clock-app at home screen */
+#clock-app-div {
+    font-size: 45%;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock-frame {
+    background-color: white;
+    border-radius: 50%;
+    width: 80%;
+    height: 80%;
+    position: relative;
+}
+
+#clock-app-div {
+    background-color: black;
+}
+
+.clock-frame .number {
+    --rotation: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform: rotate(var(--rotation));
+}
+
+.clock-frame .number1 {
+    --rotation: 30deg;
+}
+
+.clock-frame .number2 {
+    --rotation: 60deg;
+}
+
+.clock-frame .number3 {
+    --rotation: 90deg;
+}
+
+.clock-frame .number4 {
+    --rotation: 120deg;
+}
+
+.clock-frame .number5 {
+    --rotation: 150deg;
+}
+
+.clock-frame .number6 {
+    --rotation: 180deg;
+}
+
+.clock-frame .number7 {
+    --rotation: 210deg;
+}
+
+.clock-frame .number8 {
+    --rotation: 240deg;
+}
+
+.clock-frame .number9 {
+    --rotation: 270deg;
+}
+
+.clock-frame .number10 {
+    --rotation: 300deg;
+}
+
+.clock-frame .number11 {
+    --rotation: 330deg;
+}
+
+.clock-frame .hand {
+    --rotation: 0;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    height: 45%;
+    width: 5%;
+    background-color: black;
+    transform-origin: bottom;
+    transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+    border-top-left-radius: 25%;
+    border-top-right-radius: 25%;
+    z-index: 10;
+    border: 50% solid black;
+}
+
+
+.clock-frame .hand.hour {
+    height: 30%;
+}
+
+.clock-frame .hand.second {
+    width: 3%;
+    background-color: red;
+}
+
+.clock-frame::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+    z-index: 11;
+    width: 7%;
+    height: 7%;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* Calendar app at home screen */
 #calendar-day {
     padding-top: 8%;
-
-
 }
 
 #calendar-date {
@@ -148,6 +263,8 @@ img[alt=youtube] {
     position: static;
 }
 
+
+/* App contents */
 .app-content {
     width: 100vw;
     height: 100vh;
@@ -449,7 +566,8 @@ form.message-me-form {
         display: none;
     }
 
-    #calendar-div {
+    #calendar-div,
+    #clock-app-div {
         width: 15vw;
         height: 15vw;
         font-weight: bold;

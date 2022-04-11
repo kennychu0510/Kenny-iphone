@@ -44,6 +44,23 @@ function updateTime() {
     calendarDay.innerText = day
     calendarDate.innerText = date
 
+    // Clock app
+    const secondsRatio = today.getSeconds() / 60
+    const minutesRatio = (secondsRatio + today.getMinutes()) / 60
+    const hourRatio = (minutesRatio + today.getHours()) / 12
+
+    const hourHand = document.querySelector('.hand.hour')
+    const minuteHand = document.querySelector('.hand.minute')
+    const secondHand = document.querySelector('.hand.second')
+
+    setRotation(secondHand, secondsRatio)
+    setRotation(minuteHand, minutesRatio)
+    setRotation(hourHand, hourRatio)
+
+}
+
+function setRotation(element, rotationRatio) {
+    element.style.setProperty('--rotation', rotationRatio * 360)
 }
 
 updateTime()
@@ -65,7 +82,7 @@ const telegramApp = document.querySelector('img[alt=telegram]')
 const contactMeApp = document.querySelector('img[alt=contact]')
 const aboutMeApp = document.querySelector('.grid-item-about-me')
 const notesApp = document.querySelector('img[alt=notes]')
-const clockApp = document.querySelector('img[alt=clock]')
+const clockApp = document.querySelector('.clock-app-icon')
 const reminderApp = document.querySelector('img[alt=reminder]')
 // const callApp = document.querySelector('img[alt=phone]')
 // const callButton = document.querySelector('.call-button')
@@ -157,15 +174,12 @@ const myApps = [{
         div: notesDiv
     },
     {
-        app: clockApp,
-        div: clockDiv
-    },
-    {
         app: reminderApp,
         div: reminderDiv,
     }
 ]
 
+// App opening
 for (let appObject of myApps) {
     appObject.app.addEventListener('click', () => {
         toggleClass(returnHomeButton, 'active')
@@ -173,6 +187,7 @@ for (let appObject of myApps) {
     })
 }
 
+// Return home button 
 returnHomeButton.addEventListener('click', () => {
     toggleClass(returnHomeButton, 'active')
     for (let appObject of myApps) {
