@@ -235,11 +235,20 @@ newReminderButton.addEventListener('click', () => {
 
 
 // Alert user depending on window size
-
+function alertUserBasedOnWindowSize() {
+    if (window.innerHeight > 926 || window.innerWidth > 428) {
+        alert('This website is best viewed on mobile')
+    }
+}
+alertUserBasedOnWindowSize()
 
 
 // Resize calendar font size
-window.addEventListener('resize', resizeCalendar)
+window.addEventListener('resize', () => {
+    alertUserBasedOnWindowSize()
+    resizeCalendar()
+
+})
 
 function resizeCalendar() {
     const appSize = document.querySelector('.grid-item img').clientHeight
@@ -257,6 +266,8 @@ function resizeCalendar() {
     calendarDate.style.padding = `${appSize * 0.05}px 0`
 }
 resizeCalendar()
+
+// Control top
 
 // NO FUNCTIONS YET
 messageMeButton.addEventListener('click', () => {

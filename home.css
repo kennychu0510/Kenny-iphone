@@ -543,7 +543,7 @@ form.message-me-form {
 @media only screen and (min-width: 800px) {
     .grid-container {
         grid-template-columns: repeat(7, auto);
-        column-gap: 4vw;
+        column-gap: 2vw;
         row-gap: 6vh;
         font-size: 2vw;
     }
@@ -568,7 +568,7 @@ form.message-me-form {
 
 
     #top-bar {
-        padding: 15px 4vw;
+        padding: 15px 5vw;
     }
 
     #dock {
@@ -617,7 +617,7 @@ form.message-me-form {
 
 @media only screen and (min-width: 1100px) {
     #top-bar {
-        font-size: 20px;
+        /* font-size: 20px; */
 
     }
 
