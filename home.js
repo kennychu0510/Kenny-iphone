@@ -132,7 +132,7 @@ function toggleClass(DOMelement, className) {
 const gameLink = 'https://kennychu0510.github.io/Kenny-iphone/game/game.html'
 
 // Enable button links
-addonClickToLink(appleApp, 'http://www.apple.com')
+addonClickToLink(appleApp, '/mac/index.html')
 addonClickToLink(instagramApp, 'https://www.instagram.com/kengonoo/')
 addonClickToLink(facebookApp, 'https://www.facebook.com/kennychu0510')
 addonClickToLink(mailApp, 'mailto:kennychu0510@gmail.com')
@@ -232,6 +232,31 @@ newReminderButton.addEventListener('click', () => {
     }
 
 })
+
+
+// Alert user depending on window size
+
+
+
+// Resize calendar font size
+window.addEventListener('resize', resizeCalendar)
+
+function resizeCalendar() {
+    const appSize = document.querySelector('.grid-item img').clientHeight
+    const calendarDay = document.querySelector('#calendar-day')
+    const calendarDate = document.querySelector('#calendar-date')
+
+    console.log(appSize * 0.5)
+    console.log('calendaryDay: ', appSize * 0.2)
+    console.log('calendaryDate: ', appSize * 0.4)
+
+    calendarDay.style.fontSize = `${appSize * 0.3}px`
+    calendarDay.style.lineHeight = `${appSize * 0.3}px`
+    calendarDate.style.fontSize = `${appSize * 0.5}px`
+    calendarDate.style.lineHeight = `${appSize * 0.5}px`
+    calendarDate.style.padding = `${appSize * 0.05}px 0`
+}
+resizeCalendar()
 
 // NO FUNCTIONS YET
 messageMeButton.addEventListener('click', () => {

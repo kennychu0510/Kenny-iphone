@@ -251,14 +251,12 @@ img[alt=youtube] {
 }
 
 #calendar-day {
-    padding-top: 5%;
+    padding-top: 10%;
     font-size: 4vw;
 }
 
 #calendar-date {
     color: black;
-    margin-top: -15%;
-    font-size: 8vw;
 }
 
 .dock {
@@ -564,11 +562,6 @@ form.message-me-form {
         font-size: 2vw;
     }
 
-    #calendar-date {
-        margin-top: -15%;
-        font-size: 4vw;
-    }
-
     .clock-frame {
         font-size: 1vh;
     }
@@ -594,10 +587,6 @@ form.message-me-form {
 
     .date {
         display: flex;
-    }
-
-    #calendar-date {
-        font-size: 4vw;
     }
 
 }
@@ -726,14 +715,5 @@ form.message-me-form {
         max-height: 80px;
     }
 
-    /* #calendar-date {
-        font-size: 5vh;
-    } */
-}
-
-@media only screen and (min-width: 1700px) {
-    div#calendar-date {
-        font-size: 60px;
-    }
 
 }
