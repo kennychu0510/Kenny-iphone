@@ -396,7 +396,7 @@ input[type=checkbox] {
 
 .new-reminder-container {
     margin-top: auto;
-    margin-bottom: 10vh;
+    margin-bottom: 20vh;
     align-self: start;
     display: flex;
     align-items: center;
@@ -419,6 +419,22 @@ textarea#note-area:focus,
     outline: none;
 }
 
+.reminder-delete {
+    position: absolute;
+    transform: translate(-50%, -25%);
+    color: white;
+    background-color: red;
+    border: none;
+    border-radius: 10%;
+    padding: 2%;
+    display: none;
+}
+
+.reminder-delete.active {
+    display: inline-block;
+}
+
+@keyframes slideFromRight {}
 
 @keyframes appOpen {
     0% {
@@ -548,6 +564,20 @@ form.message-me-form {
         font-size: 2vw;
     }
 
+    .app-content>div.name {
+        padding: 4vh 0;
+        font-size: 5vh;
+    }
+
+    .return-home {
+        left: 6vw;
+        top: 9vh;
+    }
+
+    .return-home i {
+        font-size: 3vh;
+    }
+
     .grid-item>img,
     #calendar-div,
     #clock-app-div {
@@ -645,7 +675,6 @@ form.message-me-form {
         transform: scale(1.2);
     }
 
-
     .app-content>div {
         padding: 0;
     }
@@ -655,11 +684,7 @@ form.message-me-form {
         width: 25vh;
     }
 
-    .app-content>div.name {
-        padding: 5vh 0;
-        font-size: 5vh;
 
-    }
 
     #contact-me-buttons {
         width: 50vw;
@@ -677,14 +702,7 @@ form.message-me-form {
         font-size: 2vw;
     }
 
-    .return-home {
-        left: 6vw;
-        top: 9vh;
-    }
 
-    .return-home i {
-        font-size: 3vh;
-    }
 
     .wechat-QRcode {
         padding-top: 10vh;

@@ -9,8 +9,8 @@ let bootTime = 10000 // milliseconds
 const playSoundDelay = bootTime / 10 // milliseconds
 
 // DEBUGGING USE
-let playAudio = true // Set false to mute boot up sound
-bootTime = 5000 // Set to 1 to speed up boot time
+let playAudio = false // Set false to mute boot up sound
+bootTime = 1 // Set to 1 to speed up boot time
 // DEBUGGING USE
 
 powerUp.addEventListener('click', function bootUpFunction() {
@@ -134,7 +134,7 @@ let finderActive = true
 let appOpened = false
 
 // Terminal app icon click
-const terminalApp = document.querySelector('#terminal-icon')
+const terminalIcon = document.querySelector('#terminal-icon')
 
 finderIcon.classList.add('app-open')
 
@@ -146,7 +146,7 @@ terminalClose.addEventListener('click', () => {
     terminalWindow.classList.remove('active')
 
     // Remove white dot beneath the app icon at the dock
-    terminalApp.classList.remove('app-open')
+    terminalIcon.classList.remove('app-open')
 
     // Update the display of topbar
     appName.innerText = "Finder"
@@ -201,6 +201,18 @@ appName.addEventListener('click', () => {
             appName.classList.remove('active')
         })
 
+        function topBarCloseAppClickHandler(appIcon, appWindow) {
+            closeAppSelect.addEventListener('click', () => {
+                appWindow.classList.remove('active')
+                appIcon.classList.remove('app-open')
+                appNameDropdown.classList.remove('active')
+                appName.classList.remove('active')
+                finderActive = true
+                appOpened = false
+                resetFinderName()
+            })
+        }
+
 
         if (finderActive) {
             closeAppSelect.addEventListener('click', () => {
@@ -221,35 +233,38 @@ appName.addEventListener('click', () => {
                 }, 1000)
             })
         } else if (gameIcon.classList.contains('app-open')) {
-            closeAppSelect.addEventListener('click', () => {
-                gameWindow.classList.remove('active')
-                gameIcon.classList.remove('app-open')
-                appNameDropdown.classList.remove('active')
-                appName.classList.remove('active')
-                finderActive = true
-                appOpened = false
-                resetFinderName()
-            })
+            topBarCloseAppClickHandler(gameIcon, gameWindow)
+            // closeAppSelect.addEventListener('click', () => {
+            //     gameWindow.classList.remove('active')
+            //     gameIcon.classList.remove('app-open')
+            //     appNameDropdown.classList.remove('active')
+            //     appName.classList.remove('active')
+            //     finderActive = true
+            //     appOpened = false
+            //     resetFinderName()
+            // })
         } else if (safariIcon.classList.contains('app-open')) {
-            closeAppSelect.addEventListener('click', () => {
-                safariWindow.classList.remove('active')
-                safariIcon.classList.remove('app-open')
-                appNameDropdown.classList.remove('active')
-                appName.classList.remove('active')
-                finderActive = true
-                appOpened = false
-                resetFinderName()
-            })
-        } else if (terminalApp.classList.contains('app-open')) {
-            closeAppSelect.addEventListener('click', () => {
-                terminalWindow.classList.remove('active')
-                terminalApp.classList.remove('app-open')
-                appNameDropdown.classList.remove('active')
-                appName.classList.remove('active')
-                finderActive = true
-                appOpened = false
-                resetFinderName()
-            })
+            topBarCloseAppClickHandler(safariIcon, safariWindow)
+            // closeAppSelect.addEventListener('click', () => {
+            //     safariWindow.classList.remove('active')
+            //     safariIcon.classList.remove('app-open')
+            //     appNameDropdown.classList.remove('active')
+            //     appName.classList.remove('active')
+            //     finderActive = true
+            //     appOpened = false
+            //     resetFinderName()
+            // })
+        } else if (terminalIcon.classList.contains('app-open')) {
+            topBarCloseAppClickHandler(terminalIcon, terminalWindow)
+            // closeAppSelect.addEventListener('click', () => {
+            //     terminalWindow.classList.remove('active')
+            //     terminalIcon.classList.remove('app-open')
+            //     appNameDropdown.classList.remove('active')
+            //     appName.classList.remove('active')
+            //     finderActive = true
+            //     appOpened = false
+            //     resetFinderName()
+            // })
         }
 
     }
@@ -297,15 +312,15 @@ appName.addEventListener('click', () => {
     }
 })
 
-// Opening terminal
-terminalApp.addEventListener('click', () => {
 
+// Opening terminal
+terminalIcon.addEventListener('click', () => {
     // Prevent another app clicked and an app is already opened
     if (!appOpened) {
         appOpened = true
 
         // Small white dot beneath app icon
-        terminalApp.classList.add('app-open')
+        terminalIcon.classList.add('app-open')
 
 
         finderActive = false
@@ -317,7 +332,7 @@ terminalApp.addEventListener('click', () => {
         fileLabel.innerText = 'Shell'
 
 
-        if (terminalApp.classList.contains('app-open')) {
+        if (terminalIcon.classList.contains('app-open')) {
             terminalWindow.classList.add('active')
             document.querySelector('#terminal-top-left .hover-text').classList.remove('disabled-hover')
         }
@@ -365,7 +380,7 @@ terminalWindow.addEventListener('keypress', (key) => {
 
         } else if (inputValue === 'help') {
             terminalOutputContent =
-                `console.log('hello world') ---------------  to print 'hello world'
+                `console.log('hello world') ---------------  to print hello world
                 open(http://www.google.com) --------------  to open google in a new tab
                 clear() ----------------------------------  to clear terminal`
 
@@ -405,126 +420,99 @@ terminalWindow.addEventListener('keypress', (key) => {
 
 })
 
+const gameAppObject = {
+    aboutLabel: 'Game of Life',
+    openNewTabLink: 'game.html',
+    quitAppLabel: 'Quit Game of Life',
+}
+const SafariAppObject = {
+    aboutLabel: 'Safari',
+    openNewTabLink: 'https://app.daily.dev/',
+    quitAppLabel: 'Quit Safari',
+}
 
-// Set up game button
+function openAppFromDock(appIcon, appWindow, appObject) {
+
+    if (!appOpened) {
+        appOpened = true
+    }
+
+    // Small white dot beneath app icon
+    appIcon.classList.add('app-open')
+    finderActive = false
+
+    // Update drop down menu labels
+    aboutLabel = appObject.aboutLabel
+    openNewTabLink = appObject.openNewTabLink
+    quitAppLabel = appObject.quitAppLabel
+    appName.innerText = appObject.aboutLabel
+
+    // window.open('game.html')
+    if (appIcon.classList.contains('app-open')) {
+        appWindow.classList.add('active')
+        appName.innerText = appObject.aboutLabel
+    }
+
+}
+
+
+// Set up game in dock
 const gameIcon = document.querySelector('#game-icon')
 const appNameDropdown = document.querySelector('#app-name-dropdown')
 gameIcon.addEventListener('click', () => {
-
-
-    // Prevent another app clicked and an app is already opened
-    if (!appOpened) {
-        appOpened = true
-
-        // Small white dot beneath app icon
-        gameIcon.classList.add('app-open')
-        finderActive = false
-
-        // Update drop down menu labels
-        aboutLabel = 'Game of Life'
-        openNewTabLink = 'game.html'
-        quitAppLabel = 'Quit Game of Life'
-        appName.innerText = 'Game of Life'
-
-        // window.open('game.html')
-
-        if (gameIcon.classList.contains('app-open')) {
-            gameWindow.classList.add('active')
-            appName.innerText = "Game of Life"
-
-        }
-
-    }
-
-    // Change drop down labels
-
-
+    openAppFromDock(gameIcon, gameWindow, gameAppObject)
 })
+// gameIcon.addEventListener('click', () => {
+//     // Prevent another app clicked and an app is already opened
+//     if (!appOpened) {
+//         appOpened = true
 
-// Set up safari icon button
+//         // Small white dot beneath app icon
+//         gameIcon.classList.add('app-open')
+//         finderActive = false
+
+//         // Update drop down menu labels
+//         aboutLabel = 'Game of Life'
+//         openNewTabLink = 'game.html'
+//         quitAppLabel = 'Quit Game of Life'
+//         appName.innerText = 'Game of Life'
+
+//         // window.open('game.html')
+//         if (gameIcon.classList.contains('app-open')) {
+//             gameWindow.classList.add('active')
+//             appName.innerText = "Game of Life"
+//         }
+//     }
+//     // Change drop down labels
+// })
+
+// Set up safari in dock
 const safariIcon = document.querySelector('#safari-icon')
 safariIcon.addEventListener('click', () => {
-
-    // Prevent another app clicked and an app is already opened
-    if (!appOpened) {
-        appOpened = true
-        // Small white dot beneath app icon
-        safariIcon.classList.add('app-open')
-        finderActive = false
-
-        // Update drop down menu labels
-        aboutLabel = 'About Safari'
-        openNewTabLink = 'https://app.daily.dev/'
-        quitAppLabel = 'Quit Safari'
-        appName.innerText = 'Safari'
-
-        if (safariIcon.classList.contains('app-open')) {
-            safariWindow.classList.add('active')
-        }
-    }
-
-    // // Enable top bar select dropdown
-    // // appName.addEventListener('click', () => {
-    // //     appNameDropdown.classList.toggle('active')
-    // //     appName.classList.toggle('active')
-
-    // //     const newTabSelect = document.querySelector('#open-new-tab')
-    // //     const closeAppSelect = document.querySelector('#close-app')
-
-    // //     newTabSelect.innerText = 'Open in new tab'
-    // //     closeAppSelect.innerText = 'Quit Safari'
-
-    // //     newTabSelect.addEventListener('click', () => {
-    // //         window.open('https://app.daily.dev/')
-    // //         appNameDropdown.classList.remove('active')
-    // //         safariIcon.classList.remove('active')
-    // //     })
-    // //     closeAppSelect.addEventListener('click', () => {
-    // //         safariWindow.classList.remove('active')
-    // //         safariIcon.classList.remove('app-open')
-    // //         appName.innerText = "Finder"
-    // //         fileLabel.innerText = "File"
-    // //         appNameDropdown.classList.remove('active')
-    // //         appName.classList.remove('active')
-
-    // //     })
-
-    // // })
-
-    // // Close dropdown window if elsewhere is clicked
-    // if (appleDropdown.classList.contains('active')) {
-    //     // console.log('appleDrodown class is active')
-    //     const leftX = appleDropdown.clientLeft
-    //     const rightX = appleDropdown.clientLeft + appleDropdown.clientWidth
-    //     const topY = appleDropdown.clientTop
-    //     const botY = appleDropdown.clientTop + appleDropdown.clientWidth
-
-    //     // Global mouse-click event listener
-    //     const website = document.querySelector('body')
-
-    //     website.addEventListener('click', (event) => {
-    //         // console.log("eventClientX: ", event.clientX)
-    //         // console.log("eventClientY: ", event.clientY)
-
-    //         let mouseClickedX = event.clientX
-    //         let mouseClickedY = event.clientY
-
-
-    //         // Mouse clicked outside of the dropdown menu left-right offset
-    //         if ((mouseClickedX >= leftX && mouseClickedX <= rightX && mouseClickedY <= botY)) {
-    //             return
-    //         } else {
-    //             appleDropdown.classList.remove('active')
-    //             appleIcon.classList.remove('active')
-    //         }
-
-    //     })
-
-
-    // }
+    openAppFromDock(safariIcon, safariWindow, SafariAppObject)
 })
+// safariIcon.addEventListener('click', () => {
 
-// Set up apple icon button
+//     // Prevent another app clicked and an app is already opened
+//     if (!appOpened) {
+//         appOpened = true
+//         // Small white dot beneath app icon
+//         safariIcon.classList.add('app-open')
+//         finderActive = false
+
+//         // Update drop down menu labels
+//         aboutLabel = 'About Safari'
+//         openNewTabLink = 'https://app.daily.dev/'
+//         quitAppLabel = 'Quit Safari'
+//         appName.innerText = 'Safari'
+
+//         if (safariIcon.classList.contains('app-open')) {
+//             safariWindow.classList.add('active')
+//         }
+//     }
+// })
+
+// Set up apple icon on top bar
 appleIcon.addEventListener('click', () => {
     appleDropdown.classList.toggle('active')
     appleIcon.classList.toggle('active')
@@ -578,19 +566,6 @@ appleIcon.addEventListener('click', () => {
                 appleDropdown.classList.remove('active')
                 appleIcon.classList.remove('active')
             }
-
-
-            // console.log({
-            //     leftX
-            // }, {
-            //     rightX
-            // }, {
-            //     topY
-            // }, {
-            //     botY
-            // })
-            // console.log("mouseClickedX: ", mouseClickedX, "mouseClickedY: ", mouseClickedY)
-
         })
     }
 })
@@ -634,56 +609,6 @@ addTabClickListener(overViewTab, aboutMeContent)
 addTabClickListener(workTab, workContent)
 addTabClickListener(educationTab, educationContent)
 addTabClickListener(hobbiesTab, hobbiesContent)
-
-// overViewTab.addEventListener('click', () => {
-//     aboutMeContent.classList.add('active')
-//     overViewTab.classList.add('active')
-//     for (let tab of aboutMeAllTabs) {
-//         if (tab.id !== 'overview') {
-//             tab.classList.remove('active')
-//         }
-//     }
-//     workContent.classList.remove('active')
-//     educationContent.classList.remove('active')
-//     hobbiesContent.classList.remove('active')
-// })
-// workTab.addEventListener('click', () => {
-//     workTab.classList.add('active')
-//     workContent.classList.add('active')
-//     for (let tab of aboutMeAllTabs) {
-//         if (tab.id !== 'work') {
-//             tab.classList.remove('active')
-//         }
-//     }
-//     aboutMeContent.classList.remove('active')
-//     educationContent.classList.remove('active')
-//     hobbiesContent.classList.remove('active')
-// })
-// educationTab.addEventListener('click', () => {
-//     educationTab.classList.add('active')
-//     educationContent.classList.add('active')
-//     for (let tab of aboutMeAllTabs) {
-//         if (tab.id !== 'education') {
-//             tab.classList.remove('active')
-//         }
-//     }
-//     aboutMeContent.classList.remove('active')
-//     workContent.classList.remove('active')
-//     hobbiesContent.classList.remove('active')
-// })
-// hobbiesTab.addEventListener('click', () => {
-//     hobbiesTab.classList.add('active')
-//     hobbiesContent.classList.add('active')
-//     for (let tab of aboutMeAllTabs) {
-//         if (tab.id !== 'hobbies') {
-//             tab.classList.remove('active')
-//         }
-//     }
-//     aboutMeContent.classList.remove('active')
-//     workContent.classList.remove('active')
-//     educationContent.classList.remove('active')
-// })
-
 
 
 // Terminal last open date

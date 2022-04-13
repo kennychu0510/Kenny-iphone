@@ -109,6 +109,7 @@ const notesDiv = document.querySelector('.notes')
 const clockDiv = document.querySelector('.clock')
 const reminderDiv = document.querySelector('.reminder')
 const reminderDivContainer = document.querySelector('.reminder-container')
+const reminderItemsDivContainer = document.querySelector('.reminder-items-container')
 
 // Buttons inside Apps
 const newReminderButton = document.querySelector('.new-reminder-container')
@@ -213,7 +214,7 @@ contactMe_wechatMeButton.addEventListener('click', () => {
 newReminderButton.addEventListener('click', () => {
     const reminderItems = document.querySelectorAll('.reminder-item').length
 
-    if (length > 8) {
+    if (reminderItems > 5) {
         alert('Max reminders reached')
     } else {
 
@@ -224,14 +225,53 @@ newReminderButton.addEventListener('click', () => {
         const checkmarkSpan = document.createElement('span')
         addClass(checkmarkSpan, 'checkmark')
         const reminderInput = document.createElement('textarea')
+        reminderInput.setAttribute('rows', 1)
         const horizontalLine = document.createElement('hr')
+        const deleteButton = document.createElement('button')
+        deleteButton.innerText = 'Delete'
+        addClass(deleteButton, 'reminder-delete')
 
-        reminderItemDiv.append(checkboxInput, checkmarkSpan, reminderInput, horizontalLine)
-
-        reminderDivContainer.appendChild(reminderItemDiv)
+        reminderItemDiv.append(checkboxInput, checkmarkSpan, reminderInput, deleteButton, horizontalLine)
+        reminderItemsDivContainer.appendChild(reminderItemDiv)
+        const newReminderDiv = document.querySelectorAll('.reminder-item')[document.querySelectorAll('.reminder-item').length - 1]
+        addDeleteButtonOnSwipe(newReminderDiv)
     }
 
 })
+
+// Reminder delete swipe
+
+// Add delete swipe handler for default reminder item
+const defaultReminderItem = document.querySelector('.reminder-item')
+addDeleteButtonOnSwipe(defaultReminderItem)
+
+function addDeleteButtonOnSwipe(reminderItem) {
+    reminderItem.addEventListener('touchstart', (e) => {
+        const startX = [...e.changedTouches][0].pageX
+        const startY = [...e.changedTouches][0].pageY
+        // console.log('startX: ', startX)
+        // console.log('startY: ', startY)
+        reminderItem.addEventListener('touchend', (e) => {
+            const endX = [...e.changedTouches][0].pageX
+            const endY = [...e.changedTouches][0].pageY
+            // console.log('endX: ', endX)
+            // console.log('endY: ', endY)
+            if (startX - startY > 10) {
+                // console.log('delete?')
+                const deleteButton = document.querySelectorAll('.reminder-delete')[document.querySelectorAll('.reminder-delete').length - 1]
+                addClass(deleteButton, 'active')
+
+                deleteButton.addEventListener('click', () => {
+                    reminderItem.remove()
+                })
+
+                reminderDiv.addEventListener('click', () => {
+                    removeClass(deleteButton, 'active')
+                })
+            }
+        })
+    })
+}
 
 
 // Alert user depending on window size
@@ -255,9 +295,9 @@ function resizeCalendar() {
     const calendarDay = document.querySelector('#calendar-day')
     const calendarDate = document.querySelector('#calendar-date')
 
-    console.log(appSize * 0.5)
-    console.log('calendaryDay: ', appSize * 0.2)
-    console.log('calendaryDate: ', appSize * 0.4)
+    // console.log(appSize * 0.5)
+    // console.log('calendaryDay: ', appSize * 0.2)
+    // console.log('calendaryDate: ', appSize * 0.4)
 
     calendarDay.style.fontSize = `${appSize * 0.3}px`
     calendarDay.style.lineHeight = `${appSize * 0.3}px`
