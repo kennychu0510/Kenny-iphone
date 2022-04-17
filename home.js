@@ -280,7 +280,7 @@ function alertUserBasedOnWindowSize() {
         alert('This website is best viewed on mobile')
     }
 }
-alertUserBasedOnWindowSize()
+
 
 
 // Resize calendar font size
