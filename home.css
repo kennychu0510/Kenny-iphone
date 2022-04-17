@@ -316,7 +316,7 @@ label[for=note-area] {
 }
 
 .reminder>div.reminder-container {
-    padding: 3vh 6vw;
+    padding: 5vh 6vw;
     width: 100%;
 }
 
@@ -337,7 +337,7 @@ label[for=note-area] {
 }
 
 input[type=checkbox] {
-    margin-right: 2vw;
+    margin-right: 10px;
     opacity: 0;
     cursor: pointer;
 }
@@ -387,16 +387,17 @@ input[type=checkbox] {
     color: white;
     border: none;
     width: 70vw;
+    margin-left: 5px;
 }
 
 .reminder img[alt=new-reminder] {
     width: 8vw;
-    padding-right: 2vw;
+    padding-right: 10px;
 }
 
 .new-reminder-container {
     margin-top: auto;
-    margin-bottom: 20vh;
+    margin-bottom: 10vh;
     align-self: start;
     display: flex;
     align-items: center;
@@ -425,8 +426,9 @@ input[type=checkbox] {
     background-color: red;
     border: none;
     border-radius: 10%;
-    padding: 2%;
+    padding: 1%;
     display: none;
+    right: 0;
 }
 
 .reminder-delete.active {
@@ -488,14 +490,14 @@ input[type=checkbox] {
     align-items: center;
     position: absolute;
     color: white;
-    top: 6vh;
+    top: 7vh;
     left: 7vw;
     z-index: 10;
     display: none;
 }
 
 .return-home i {
-    font-size: 5vw;
+    font-size: 25px;
     padding-bottom: 0.5vw;
 }
 
@@ -558,13 +560,15 @@ form.message-me-form {
 @media only screen and (min-width: 800px) {
 
     .reminder-container>h2 {
-        margin-top: 6vh
+        margin-top: 6vh;
+        font-size: 50px;
     }
 
 
     .new-reminder-container>img[alt=new-reminder] {
-        width: 5vh;
-        margin-right: 0.5vw;
+        width: 50px;
+        margin-right: 5px;
+        margin-left: 6vw;
     }
 
     .grid-container {
@@ -585,7 +589,7 @@ form.message-me-form {
     }
 
     .return-home i {
-        font-size: 3vh;
+        font-size: 30px;
     }
 
     .grid-item>img,
