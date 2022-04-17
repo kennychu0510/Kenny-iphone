@@ -133,7 +133,7 @@ function toggleClass(DOMelement, className) {
 const gameLink = 'https://kennychu0510.github.io/Kenny-iphone/game/game.html'
 
 // Enable button links
-addonClickToLink(appleApp, 'https://kennychu0510.github.io/Kenny-iphone/mac/index.html')
+addonClickToLink(appleApp, 'https://kennychu0510.github.io/macbook/')
 addonClickToLink(instagramApp, 'https://www.instagram.com/kengonoo/')
 addonClickToLink(facebookApp, 'https://www.facebook.com/kennychu0510')
 addonClickToLink(mailApp, 'mailto:kennychu0510@gmail.com')
