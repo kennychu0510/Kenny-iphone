@@ -86,14 +86,14 @@ body {
 
 /* Customized app icons */
 img[alt=youtube] {
-
     background-color: white;
 }
 
 img[alt=aboutme],
 img[alt=github],
 img[alt=game],
-img[alt=youtube] {
+img[alt=youtube],
+img[alt=sudoku] {
     border-radius: 20%;
 }
 
@@ -332,14 +332,14 @@ label[for=note-area] {
 .reminder-item {
     position: relative;
     padding-bottom: 1vh;
+    display: flex;
+    align-items: start;
 }
 
 input[type=checkbox] {
-    margin-right: 5vw;
+    margin-right: 2vw;
     opacity: 0;
     cursor: pointer;
-    width: 5vw;
-    height: 5vw;
 }
 
 /* Custom checkbox button */
@@ -368,6 +368,7 @@ input[type=checkbox] {
     cursor: pointer;
     display: none;
     pointer-events: none;
+
 }
 
 /* When checkbox is checked */
@@ -380,13 +381,12 @@ input[type=checkbox] {
 }
 
 
-.reminder-item>textarea {
+.reminder-item>input[type=text] {
     background-color: black;
     caret-color: white;
     color: white;
     border: none;
     width: 70vw;
-    overflow-wrap: break-word;
 }
 
 .reminder img[alt=new-reminder] {
@@ -402,7 +402,7 @@ input[type=checkbox] {
     align-items: center;
 }
 
-textarea#note-area {
+/* textarea#note-area {
     height: 100%;
     resize: none;
     background-color: black;
@@ -412,10 +412,9 @@ textarea#note-area {
     color: white;
     height: min-content;
 }
+*/
 
-textarea#note-area:focus,
-.reminder-item input[type=text]:focus,
-.reminder-item>textarea:focus {
+.reminder-item input[type=text]:focus {
     outline: none;
 }
 
@@ -557,8 +556,19 @@ form.message-me-form {
 }
 
 @media only screen and (min-width: 800px) {
+
+    .reminder-container>h2 {
+        margin-top: 6vh
+    }
+
+
+    .new-reminder-container>img[alt=new-reminder] {
+        width: 5vh;
+        margin-right: 0.5vw;
+    }
+
     .grid-container {
-        grid-template-columns: repeat(7, auto);
+        grid-template-columns: repeat(7, 1fr);
         column-gap: 2vw;
         row-gap: 6vh;
         font-size: 2vw;

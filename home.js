@@ -69,10 +69,10 @@ updateTime()
 setInterval(updateTime, 1000)
 
 // DOM Elements Select
-const appleApp = document.querySelector('img[alt=apple]')
+const macbookApp = document.querySelector('img[alt=macbook]')
 const instagramApp = document.querySelector('img[alt=instagram]')
 const facebookApp = document.querySelector('img[alt=facebook]')
-const homeApp = document.querySelector('img[alt=home]')
+const sudokuApp = document.querySelector('img[alt=sudoku]')
 const mailApp = document.querySelector('img[alt=mail]')
 const githubApp = document.querySelector('img[alt=github]')
 const weatherApp = document.querySelector('img[alt=weather]')
@@ -133,7 +133,7 @@ function toggleClass(DOMelement, className) {
 const gameLink = 'https://kennychu0510.github.io/Kenny-iphone/game/game.html'
 
 // Enable button links
-addonClickToLink(appleApp, 'https://kennychu0510.github.io/macbook/')
+addonClickToLink(macbookApp, 'https://kennychu0510.github.io/macbook/')
 addonClickToLink(instagramApp, 'https://www.instagram.com/kengonoo/')
 addonClickToLink(facebookApp, 'https://www.facebook.com/kennychu0510')
 addonClickToLink(mailApp, 'mailto:kennychu0510@gmail.com')
@@ -146,6 +146,7 @@ addonClickToLink(youtubeApp, 'https://www.youtube.com/')
 // addonClickToLink(whatsappButton, 'https://api.whatsapp.com/send?phone=')
 addonClickToLink(telegramApp, 'https://t.me/Kengono')
 addonClickToLink(telegramButton, 'https://t.me/Kengono')
+addonClickToLink(sudokuApp, 'https://kennychu0510.github.io/sudoku-solver/')
 // addonClickToLink(callButton, 'tel:852-********')
 // addonClickToLink(callApp, 'tel:852-********')
 // addonClickToLink(gameApp, gameLink)
@@ -224,8 +225,8 @@ newReminderButton.addEventListener('click', () => {
         checkboxInput.setAttribute('type', 'checkbox')
         const checkmarkSpan = document.createElement('span')
         addClass(checkmarkSpan, 'checkmark')
-        const reminderInput = document.createElement('textarea')
-        reminderInput.setAttribute('rows', 1)
+        const reminderInput = document.createElement('input')
+        reminderInput.setAttribute('type', 'text')
         const horizontalLine = document.createElement('hr')
         const deleteButton = document.createElement('button')
         deleteButton.innerText = 'Delete'
@@ -285,7 +286,7 @@ function alertUserBasedOnWindowSize() {
 
 // Resize calendar font size
 window.addEventListener('resize', () => {
-    alertUserBasedOnWindowSize()
+    // alertUserBasedOnWindowSize()
     resizeCalendar()
 
 })
