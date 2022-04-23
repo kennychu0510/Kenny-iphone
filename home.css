@@ -334,12 +334,16 @@ label[for=note-area] {
     padding-bottom: 1vh;
     display: flex;
     align-items: start;
+
 }
 
 input[type=checkbox] {
     margin-right: 10px;
     opacity: 0;
     cursor: pointer;
+    width: 24px;
+    height: 24px;
+
 }
 
 /* Custom checkbox button */
@@ -421,7 +425,7 @@ input[type=checkbox] {
 
 .reminder-delete {
     position: absolute;
-    transform: translate(-50%, -25%);
+    transform: translate(-50%, -2px);
     color: white;
     background-color: red;
     border: none;

@@ -259,13 +259,14 @@ function addDeleteButtonOnSwipe(reminderItem) {
             // console.log('endY: ', endY)
             if (startX - startY > 10) {
                 // console.log('delete?')
-                const deleteButton = document.querySelectorAll('.reminder-delete')[document.querySelectorAll('.reminder-delete').length - 1]
+                const deleteButton = reminderItem.children[3]
                 addClass(deleteButton, 'active')
 
                 deleteButton.addEventListener('click', () => {
                     reminderItem.remove()
                 })
 
+                // if delete button is not clicked, and elsewhere is clicked, the delete button gets hidden
                 reminderDiv.addEventListener('click', () => {
                     removeClass(deleteButton, 'active')
                 })
