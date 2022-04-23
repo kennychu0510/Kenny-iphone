@@ -210,7 +210,7 @@ contactMe_wechatMeButton.addEventListener('click', () => {
     addClass(wechatDiv, 'active')
 })
 
-
+let reminderCount = 0
 // Button inside reminder app
 newReminderButton.addEventListener('click', () => {
     const reminderItems = document.querySelectorAll('.reminder-item').length
@@ -220,6 +220,9 @@ newReminderButton.addEventListener('click', () => {
     } else {
 
         const reminderItemDiv = document.createElement('div')
+        reminderItemDiv.setAttribute('data-reminder-no', reminderCount)
+        reminderCount++
+
         addClass(reminderItemDiv, 'reminder-item')
         const checkboxInput = document.createElement('input')
         checkboxInput.setAttribute('type', 'checkbox')
@@ -227,6 +230,16 @@ newReminderButton.addEventListener('click', () => {
         addClass(checkmarkSpan, 'checkmark')
         const reminderInput = document.createElement('input')
         reminderInput.setAttribute('type', 'text')
+        reminderInput.setAttribute('maxLength', 25)
+
+        reminderInput.addEventListener('input', (content) => {
+            // get index of children based on the current reminder items in reminder-item-container
+
+            // save reminder item in local storage
+            const reminderItemKey = `reminder${reminderCount}`
+            localStorage.setItem(reminderItemKey, content.target.value)
+        })
+
         const horizontalLine = document.createElement('hr')
         const deleteButton = document.createElement('button')
         deleteButton.innerText = 'Delete'
@@ -243,8 +256,8 @@ newReminderButton.addEventListener('click', () => {
 // Reminder delete swipe
 
 // Add delete swipe handler for default reminder item
-const defaultReminderItem = document.querySelector('.reminder-item')
-addDeleteButtonOnSwipe(defaultReminderItem)
+// const defaultReminderItem = document.querySelector('.reminder-item')
+// addDeleteButtonOnSwipe(defaultReminderItem)
 
 function addDeleteButtonOnSwipe(reminderItem) {
     reminderItem.addEventListener('touchstart', (e) => {
