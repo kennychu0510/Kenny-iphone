@@ -551,6 +551,13 @@ form.message-me-form {
     background-color: black;
 }
 
+.flex-container {
+    display: flex;
+    justify-content: center;
+    white-space: nowrap;
+    font-stretch: narrower;
+}
+
 
 /* Game App */
 .game>iframe {
