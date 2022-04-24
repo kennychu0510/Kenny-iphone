@@ -210,7 +210,35 @@ contactMe_wechatMeButton.addEventListener('click', () => {
     addClass(wechatDiv, 'active')
 })
 
-let reminderCount = 0
+// retrieve reminder items stored in local storage
+let reminderItemsStored = {
+    ...localStorage
+}
+let reminderCount = Object.keys(reminderItemsStored).length
+
+// console.log('there are', reminderCount, "reminders stored")
+
+
+// display reminder items that are already stored
+// for (let reminderItem in reminderItemsStored) {
+//     addReminder(reminderItemsStored[reminderItem])
+// }
+
+// Sort the keys of reminder items in ascending order
+const reminderItemKeys = Object.keys(reminderItemsStored).sort(function (a, b) {
+    const indexA = +a.slice(-1)
+    const indexB = +b.slice(-1)
+    return indexA - indexB
+})
+
+let reminderItems = 1
+
+// console.log(reminderItemKeys)
+reminderItemKeys.forEach(key => {
+    addReminder(reminderItemsStored[key])
+
+})
+
 // Button inside reminder app
 newReminderButton.addEventListener('click', () => {
     const reminderItems = document.querySelectorAll('.reminder-item').length
@@ -218,40 +246,50 @@ newReminderButton.addEventListener('click', () => {
     if (reminderItems > 5) {
         alert('Max reminders reached')
     } else {
+        addReminder()
+    }
+})
 
-        const reminderItemDiv = document.createElement('div')
-        reminderItemDiv.setAttribute('data-reminder-no', reminderCount)
-        reminderCount++
+// add reminder div function
+function addReminder(content) {
 
-        addClass(reminderItemDiv, 'reminder-item')
-        const checkboxInput = document.createElement('input')
-        checkboxInput.setAttribute('type', 'checkbox')
-        const checkmarkSpan = document.createElement('span')
-        addClass(checkmarkSpan, 'checkmark')
-        const reminderInput = document.createElement('input')
-        reminderInput.setAttribute('type', 'text')
-        reminderInput.setAttribute('maxLength', 25)
+    const reminderItemDiv = document.createElement('div')
+    reminderItemDiv.setAttribute('data-reminder-no', `reminder${reminderItems}`)
 
-        reminderInput.addEventListener('input', (content) => {
-            // get index of children based on the current reminder items in reminder-item-container
 
-            // save reminder item in local storage
-            const reminderItemKey = `reminder${reminderCount}`
-            localStorage.setItem(reminderItemKey, content.target.value)
-        })
+    addClass(reminderItemDiv, 'reminder-item')
+    const checkboxInput = document.createElement('input')
+    checkboxInput.setAttribute('type', 'checkbox')
 
-        const horizontalLine = document.createElement('hr')
-        const deleteButton = document.createElement('button')
-        deleteButton.innerText = 'Delete'
-        addClass(deleteButton, 'reminder-delete')
+    const checkmarkSpan = document.createElement('span')
+    addClass(checkmarkSpan, 'checkmark')
+    const reminderInput = document.createElement('input')
+    reminderInput.setAttribute('type', 'text')
+    reminderInput.setAttribute('maxLength', 25)
 
-        reminderItemDiv.append(checkboxInput, checkmarkSpan, reminderInput, deleteButton, horizontalLine)
-        reminderItemsDivContainer.appendChild(reminderItemDiv)
-        const newReminderDiv = document.querySelectorAll('.reminder-item')[document.querySelectorAll('.reminder-item').length - 1]
-        addDeleteButtonOnSwipe(newReminderDiv)
+    if (content) {
+        reminderInput.value = content
     }
 
-})
+    reminderInput.addEventListener('input', (content) => {
+        // get index of children based on the current reminder items in reminder-item-container
+
+        // save reminder item in local storage
+        const reminderItemKey = `reminder${reminderItems}`
+        localStorage.setItem(reminderItemKey, content.target.value)
+    })
+
+    const horizontalLine = document.createElement('hr')
+    const deleteButton = document.createElement('button')
+    deleteButton.innerText = 'Delete'
+    addClass(deleteButton, 'reminder-delete')
+
+    reminderItemDiv.append(checkboxInput, checkmarkSpan, reminderInput, deleteButton, horizontalLine)
+    reminderItemsDivContainer.appendChild(reminderItemDiv)
+    const newReminderDiv = document.querySelectorAll('.reminder-item')[document.querySelectorAll('.reminder-item').length - 1]
+    addDeleteButtonOnSwipe(newReminderDiv)
+    reminderItems++
+}
 
 // Reminder delete swipe
 
@@ -277,6 +315,11 @@ function addDeleteButtonOnSwipe(reminderItem) {
 
                 deleteButton.addEventListener('click', () => {
                     reminderItem.remove()
+
+                    // remove item from local storage
+                    // console.log(reminderItem)
+                    // console.log(reminderItem.getAttribute('data-reminder-no'))
+                    localStorage.removeItem(reminderItem.getAttribute('data-reminder-no'))
                 })
 
                 // if delete button is not clicked, and elsewhere is clicked, the delete button gets hidden
