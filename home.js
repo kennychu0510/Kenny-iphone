@@ -231,11 +231,15 @@ const reminderItemKeys = Object.keys(reminderItemsStored).sort(function (a, b) {
     return indexA - indexB
 })
 
-let reminderItems = 1
-
 // console.log(reminderItemKeys)
 reminderItemKeys.forEach(key => {
-    addReminder(reminderItemsStored[key])
+    let id
+    if (reminderItemsStored.length === 0) {
+        id = 0
+    } else {
+        id = key.slice(-1)
+    }
+    addReminder(id, reminderItemsStored[key])
 
 })
 
@@ -246,15 +250,16 @@ newReminderButton.addEventListener('click', () => {
     if (reminderItems > 5) {
         alert('Max reminders reached')
     } else {
-        addReminder()
+        addReminder(reminderCount)
+        reminderCount++
     }
 })
 
 // add reminder div function
-function addReminder(content) {
+function addReminder(id, content) {
 
     const reminderItemDiv = document.createElement('div')
-    reminderItemDiv.setAttribute('data-reminder-no', `reminder${reminderItems}`)
+    reminderItemDiv.setAttribute('data-reminder-no', `reminder${id}`)
 
 
     addClass(reminderItemDiv, 'reminder-item')
@@ -275,7 +280,7 @@ function addReminder(content) {
         // get index of children based on the current reminder items in reminder-item-container
 
         // save reminder item in local storage
-        const reminderItemKey = `reminder${reminderItems}`
+        const reminderItemKey = `reminder${id}`
         localStorage.setItem(reminderItemKey, content.target.value)
     })
 
@@ -288,7 +293,7 @@ function addReminder(content) {
     reminderItemsDivContainer.appendChild(reminderItemDiv)
     const newReminderDiv = document.querySelectorAll('.reminder-item')[document.querySelectorAll('.reminder-item').length - 1]
     addDeleteButtonOnSwipe(newReminderDiv)
-    reminderItems++
+    id++
 }
 
 // Reminder delete swipe
