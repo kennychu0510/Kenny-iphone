@@ -405,7 +405,7 @@ input[type=checkbox] {
     align-items: center;
 }
 
-/* textarea#note-area {
+textarea#note-area {
     height: 100%;
     resize: none;
     background-color: black;
@@ -414,8 +414,9 @@ input[type=checkbox] {
     font-size: 4vh;
     color: white;
     height: min-content;
+    outline: none
 }
-*/
+
 
 .reminder-item input[type=text]:focus {
     outline: none;
